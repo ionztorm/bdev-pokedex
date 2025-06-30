@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"fmt"
@@ -7,14 +7,9 @@ import (
 	"pokedex/utils"
 )
 
-const baseURL = "https://pokeapi.co/api/v2/"
+func GetRawDataFromURL(endpoint string) ([]byte, error) {
 
-func getRawData(endpoint string) ([]byte, error) {
-	fullURL := baseURL + endpoint
-
-	fmt.Println("Debug: fullURL is: ", fullURL)
-
-	req, err := http.NewRequest("GET", fullURL, nil)
+	req, err := http.NewRequest("GET", endpoint, nil)
 	if err != nil {
 		return nil, fmt.Errorf("arror fetching data: %w", err)
 	}
