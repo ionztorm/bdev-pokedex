@@ -10,7 +10,12 @@ import (
 type cliCommand struct {
 	name        string
 	description string
-	callback    func() error
+	callback    func(*config) error
+}
+
+type config struct {
+	next     string
+	previous string
 }
 
 func getCommandRegistry() map[string]cliCommand {
@@ -25,12 +30,17 @@ func getCommandRegistry() map[string]cliCommand {
 			description: "Provides help information",
 			callback:    commandHelp,
 		},
+		"map": {
+			name:        "map",
+			description: "get map locations",
+			callback:    commandMap,
+		},
 	}
 }
 
-func runCommand(command string) error {
+func runCommand(cfg *config, command string) error {
 	if cmd, exists := getCommandRegistry()[command]; exists {
-		err := cmd.callback()
+		err := cmd.callback(cfg)
 		if err != nil {
 			return err
 		}
@@ -46,6 +56,7 @@ func cleanInput(text string) []string {
 
 func startRepl() {
 
+	cfg := &config{}
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
@@ -61,7 +72,7 @@ func startRepl() {
 
 		command := cleanedInput[0]
 
-		err := runCommand(command)
+		err := runCommand(cfg, command)
 		if err != nil {
 			fmt.Println("There was a problem running your command:", err)
 		}
