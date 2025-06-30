@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"pokedex/utils"
+	"pokedex/internal/utils"
 )
 
 func GetRawDataFromURL(endpoint string) ([]byte, error) {

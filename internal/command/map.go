@@ -3,32 +3,31 @@ package command
 import (
 	"encoding/json"
 	"fmt"
-	"pokedex/api"
+	"pokedex/internal/api"
 )
 
-func cmapb(cfg *Config) error {
-	fullURL := api.BaseURL + "location-area"
-	isFirstPage := true
+type locationAreaResp struct {
+	Results []struct {
+		Name string `json:"name"`
+	} `json:"results"`
+	Next     string `json:"next"`
+	Previous string `json:"previous"`
+}
 
-	if cfg.Previous != "" {
-		fullURL = cfg.Previous
-		isFirstPage = false
+func cmap(cfg *Config) error {
+	fullURL := api.BaseURL + "location-area"
+	if cfg.Next != "" {
+		fullURL = cfg.Next
 	}
 
 	data, err := api.GetRawDataFromURL(fullURL)
 	if err != nil {
-		return fmt.Errorf("error fetching previous map data: %w", err)
+		return fmt.Errorf("error getting location data: %w", err)
 	}
 
 	var resp locationAreaResp
 	if err := json.Unmarshal(data, &resp); err != nil {
-		return fmt.Errorf("error parsing mapb response: %w", err)
-	}
-
-	if isFirstPage {
-		fmt.Println()
-		fmt.Println("you're on the first page")
-		fmt.Println()
+		return fmt.Errorf("failed to parse response: %w", err)
 	}
 
 	fmt.Println()

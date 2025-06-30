@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"pokedex/command"
+	"pokedex/internal/command"
 )
 
 func startRepl() {
