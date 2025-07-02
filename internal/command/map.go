@@ -1,7 +1,6 @@
 package command
 
 import (
-	"encoding/json"
 	"fmt"
 	"pokedex/internal/api"
 )
@@ -20,14 +19,13 @@ func cmap(cfg *Config) error {
 		fullURL = cfg.Next
 	}
 
-	data, err := api.GetRawDataFromURL(fullURL)
-	if err != nil {
-		return fmt.Errorf("error getting location data: %w", err)
+	var resp locationAreaResp
+	if err := Fetch(cfg, fullURL, &resp); err != nil {
+		return fmt.Errorf("failed to fetch location data: %w", err)
 	}
 
-	var resp locationAreaResp
-	if err := json.Unmarshal(data, &resp); err != nil {
-		return fmt.Errorf("failed to parse response: %w", err)
+	if resp.Next == "" {
+		fmt.Println("\nYou're on the last page")
 	}
 
 	fmt.Println()

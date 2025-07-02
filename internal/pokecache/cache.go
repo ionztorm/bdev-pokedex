@@ -1,6 +1,7 @@
 package pokecache
 
 import (
+	"fmt"
 	"sync"
 	"time"
 )
@@ -24,6 +25,9 @@ func (c *Cache) Add(key string, val []byte) {
 		createdAt: time.Now(),
 		val:       val,
 	}
+
+	fmt.Println("\nAdded to cache: ", key)
+
 }
 
 func (c *Cache) Get(key string) ([]byte, bool) {
@@ -34,6 +38,8 @@ func (c *Cache) Get(key string) ([]byte, bool) {
 	if !exists {
 		return nil, false
 	}
+
+	fmt.Println("\nRetrieved from cache: ", key)
 
 	return record.val, true
 }
@@ -47,6 +53,8 @@ func (c *Cache) reapLoop() {
 		for key, val := range c.cache {
 			if time.Since(val.createdAt) > c.interval {
 				delete(c.cache, key)
+				fmt.Println("\nReaped from cache: ", key)
+
 			}
 		}
 		c.mu.Unlock()
