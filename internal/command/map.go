@@ -5,14 +5,6 @@ import (
 	"pokedex/internal/api"
 )
 
-type locationAreaResp struct {
-	Results []struct {
-		Name string `json:"name"`
-	} `json:"results"`
-	Next     string `json:"next"`
-	Previous string `json:"previous"`
-}
-
 func cmap(cfg *Config) error {
 	fullURL := api.BaseURL + "location-area"
 	if cfg.Next != "" {
