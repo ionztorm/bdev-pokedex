@@ -13,7 +13,7 @@ func cmapb(cfg *Config) error {
 	}
 
 	var resp locationAreaResp
-	if err := Fetch(cfg, fullURL, &resp); err != nil {
+	if err := api.Fetch(cfg.Cache, fullURL, &resp); err != nil {
 		return fmt.Errorf("failed to fetch location data: %w", err)
 	}
 

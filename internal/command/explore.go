@@ -16,7 +16,7 @@ func cexplore(cfg *Config) error {
 
 	var resp locationPokemonResp
 
-	if err := Fetch(cfg, fullURL, &resp); err != nil {
+	if err := api.Fetch(cfg.Cache, fullURL, &resp); err != nil {
 		return fmt.Errorf("error fetching pokemon for %v: %w", area, err)
 	}
 

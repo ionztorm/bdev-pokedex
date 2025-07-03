@@ -21,7 +21,7 @@ func ccatch(cfg *Config) error {
 
 	var resp PokemonResp
 
-	if err := Fetch(cfg, fullURL, &resp); err != nil {
+	if err := api.Fetch(cfg.Cache, fullURL, &resp); err != nil {
 		return fmt.Errorf("unable to fetch pokemon (%s): %w", pokemon, err)
 	}
 

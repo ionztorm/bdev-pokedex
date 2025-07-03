@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+type Cacher interface {
+	Get(key string) ([]byte, bool)
+	Add(key string, val []byte)
+}
+
 type cacheEntry struct {
 	createdAt time.Time
 	val       []byte

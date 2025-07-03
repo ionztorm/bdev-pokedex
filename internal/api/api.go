@@ -7,7 +7,7 @@ import (
 	"pokedex/internal/utils"
 )
 
-func GetRawDataFromURL(endpoint string) ([]byte, error) {
+func getRawDataFromURL(endpoint string) ([]byte, error) {
 
 	req, err := http.NewRequest("GET", endpoint, nil)
 	if err != nil {
