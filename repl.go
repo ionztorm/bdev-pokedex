@@ -28,6 +28,7 @@ func startRepl() {
 		}
 
 		cmd := cleanedInput[0]
+		cfg.Args = cleanedInput[1:]
 
 		err := command.RunCommand(cfg, cmd)
 		if err != nil {
