@@ -7,6 +7,10 @@ import (
 
 func cexplore(cfg *Config) error {
 	area := cfg.Args[0]
+	if area == "" {
+		fmt.Println("the explore command requires a an area location. for example: 'explore sinnoh-pokemon-league-area'")
+		return nil
+	}
 
 	fullURL := api.BaseLocationAreaURL + area
 
