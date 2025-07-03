@@ -43,5 +43,10 @@ func GetCommandRegistry() map[string]cliCommand {
 			Description: "Look up information about a pokemon you've caught. Usage: 'inspect <pokemon name>'",
 			Callback:    cinspect,
 		},
+		"pokedex": {
+			Name:        "pokedex",
+			Description: "See a list of the pokemon you've caught and have in your Pokedex",
+			Callback:    cpokedex,
+		},
 	}
 }
