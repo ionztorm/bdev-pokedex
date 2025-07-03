@@ -3,6 +3,7 @@
 A command-line Pokédex application written in Go. This project is part of the [Boot.dev](https://www.boot.dev) Go course and demonstrates key Go concepts such as modularity, testing, and API interaction.
 
 ## Features
+
 - Explore Pokémon regions and locations
 - Inspect Pokémon details
 - Catch Pokémon and manage your Pokédex
@@ -11,26 +12,45 @@ A command-line Pokédex application written in Go. This project is part of the [
 - Modular code structure with unit tests
 
 ## Project Structure
+
 ```
 .
-├── main.go                # Entry point for the application
-├── cleaninput.go          # Input sanitization utilities
-├── repl.go                # REPL implementation
-├── repl_test.go           # REPL tests
-├── internal/
-│   ├── api/               # API interaction logic
-│   ├── command/           # Command implementations (explore, catch, help, map, mapb, pokedex, etc.)
-│   ├── pokecache/         # Caching utilities
-│   └── utils/             # Utility functions
-└── go.mod                 # Go module definition
+├── go.mod
+├── main.go
+├── README.md
+└── internal/
+    ├── api/
+    │   ├── constants.go
+    │   └── fetch.go
+    ├── command/
+    │   ├── catch.go
+    │   ├── command-utils.go
+    │   ├── exit.go
+    │   ├── explore.go
+    │   ├── help.go
+    │   ├── inspect.go
+    │   ├── map.go
+    │   ├── mapb.go
+    │   ├── pokedex.go
+    │   └── structs.go
+    ├── pokecache/
+    │   ├── cache.go
+    │   └── cache_test.go
+    ├── repl/
+    │   ├── repl.go
+    │   └── repl_test.go
+    └── utils/
+       └── utils.go
 ```
 
 ## Getting Started
 
 ### Prerequisites
+
 - Go 1.18 or later
 
 ### Installation
+
 1. Clone the repository:
    ```sh
    git clone <repo-url>
@@ -42,18 +62,22 @@ A command-line Pokédex application written in Go. This project is part of the [
    ```
 
 ### Running the Application
+
 ```sh
 go build
 ./pokedex
 ```
 
 ### Running Tests
+
 ```sh
 go test ./...
 ```
 
 ## Usage
+
 Start the application and use the REPL to enter commands such as:
+
 - `explore <region>`: Explore a Pokémon in the given location
 - `catch <pokemon>`: Catch a Pokémon
 - `inspect <pokemon>`: View details about a Pokémon that you've caught
@@ -64,7 +88,9 @@ Start the application and use the REPL to enter commands such as:
 - `exit`: Exit the application
 
 ## License
+
 MIT License
 
 ---
+
 This project is for educational purposes as part of the [Boot.dev](https://www.boot.dev) Go course.
