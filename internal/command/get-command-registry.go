@@ -30,8 +30,18 @@ func GetCommandRegistry() map[string]cliCommand {
 		},
 		"explore": {
 			Name:        "explore",
-			Description: "see which pokemon can be found in the chosen area",
+			Description: "See which pokemon can be found in the chosen area. Usage: 'explore <location name>'",
 			Callback:    cexplore,
+		},
+		"catch": {
+			Name:        "catch",
+			Description: "Attempt to catch a pokemon. Usage: 'catch <pokemon name>'",
+			Callback:    ccatch,
+		},
+		"inspect": {
+			Name:        "inspect",
+			Description: "Look up information about a pokemon you've caught. Usage: 'inspect <pokemon name>'",
+			Callback:    cinspect,
 		},
 	}
 }

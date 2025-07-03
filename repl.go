@@ -13,12 +13,15 @@ func startRepl() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	cfg := &command.Config{
-		Cache: pokecache.NewCache(60 * time.Second),
+		Cache:   pokecache.NewCache(60 * time.Second),
+		Pokedex: make(map[string]command.PokemonResp),
 	}
 
 	for {
 		fmt.Print("Pokedex > ")
-		scanner.Scan()
+		if !scanner.Scan() {
+			break
+		}
 		input := scanner.Text()
 
 		cleanedInput := cleanInput(input)
@@ -34,5 +37,9 @@ func startRepl() {
 		if err != nil {
 			fmt.Println("There was a problem running your command:", err)
 		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		fmt.Println("error reading input: ", err)
 	}
 }
