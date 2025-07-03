@@ -1,5 +1,7 @@
 package main
 
+import "pokedex/internal/repl"
+
 func main() {
-	startRepl()
+	repl.StartRepl()
 }

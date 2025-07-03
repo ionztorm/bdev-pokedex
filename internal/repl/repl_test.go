@@ -1,6 +1,9 @@
-package main
+package repl
 
-import "testing"
+import (
+	"pokedex/internal/utils"
+	"testing"
+)
 
 type testCase struct {
 	input    string
@@ -18,7 +21,7 @@ func TestCleanInput(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		output := cleanInput(c.input)
+		output := utils.CleanInput(c.input)
 		if len(output) != len(c.expected) {
 			t.Errorf("For input: %s\nExpected length of slice to be %d but got %d.", c.input, len(c.expected), len(output))
 		}

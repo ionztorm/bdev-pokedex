@@ -1,4 +1,4 @@
-package main
+package repl
 
 import (
 	"bufio"
@@ -6,10 +6,11 @@ import (
 	"os"
 	"pokedex/internal/command"
 	"pokedex/internal/pokecache"
+	"pokedex/internal/utils"
 	"time"
 )
 
-func startRepl() {
+func StartRepl() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	cfg := &command.Config{
@@ -24,7 +25,7 @@ func startRepl() {
 		}
 		input := scanner.Text()
 
-		cleanedInput := cleanInput(input)
+		cleanedInput := utils.CleanInput(input)
 
 		if len(cleanedInput) == 0 {
 			continue
