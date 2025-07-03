@@ -5,7 +5,7 @@ import (
 	"pokedex/internal/api"
 )
 
-func Fetch(cfg *Config, url string, v any) error {
+func Fetch(cfg *Config, url string, target any) error {
 	data, exists := cfg.Cache.Get(url)
 	if !exists {
 		var err error
@@ -15,5 +15,5 @@ func Fetch(cfg *Config, url string, v any) error {
 		}
 		cfg.Cache.Add(url, data)
 	}
-	return json.Unmarshal(data, v)
+	return json.Unmarshal(data, target)
 }
