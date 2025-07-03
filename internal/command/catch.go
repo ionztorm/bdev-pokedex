@@ -32,7 +32,7 @@ func ccatch(cfg *Config) error {
 
 	if roll < chance {
 		fmt.Printf("%s was caught!\n\n", pokemon)
-		fmt.Printf("You may now inspect it with the inspect command: 'inspect %s'", pokemon)
+		fmt.Printf("You may now inspect it with the inspect command: 'inspect %s'\n\n", pokemon)
 		cfg.Pokedex[pokemon] = resp
 	} else {
 		fmt.Printf("%s escaped!\n\n", pokemon)

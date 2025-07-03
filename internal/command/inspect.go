@@ -15,7 +15,6 @@ func cinspect(cfg *Config) error {
 		return nil
 	}
 
-	// name, height, weight, stats and type(s) of the Pokemon.
 	fmt.Println()
 	fmt.Printf("Name: %s\n", result.Name)
 	fmt.Printf("Height: %d\n", result.Height)
