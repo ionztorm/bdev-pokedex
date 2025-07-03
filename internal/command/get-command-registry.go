@@ -28,5 +28,10 @@ func GetCommandRegistry() map[string]cliCommand {
 			Description: "get the previous 20 map locations",
 			Callback:    cmapb,
 		},
+		"explore": {
+			Name:        "explore",
+			Description: "see which pokemon can be found in the chosen area",
+			Callback:    cexplore,
+		},
 	}
 }

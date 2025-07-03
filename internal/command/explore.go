@@ -1,0 +1,26 @@
+package command
+
+import (
+	"fmt"
+	"pokedex/internal/api"
+)
+
+func cexplore(cfg *Config) error {
+	area := cfg.Args[0]
+
+	fullURL := api.BaseLocationAreaURL + area
+
+	var resp locationPokemonResp
+
+	if err := Fetch(cfg, fullURL, &resp); err != nil {
+		return fmt.Errorf("error fetching pokemon for %v: %w", area, err)
+	}
+
+	fmt.Printf("\nFound the following Pokemon in %s\n\n", area)
+	for _, pokemon := range resp.PokemonEncounters {
+		fmt.Printf("- %s\n", pokemon.Pokemon.Name)
+	}
+	fmt.Println()
+
+	return nil
+}
