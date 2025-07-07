@@ -1,3 +1,5 @@
+// Package utils provides utility functions for common tasks
+// such as safely closing resources and input string processing.
 package utils
 
 import (

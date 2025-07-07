@@ -1,3 +1,5 @@
+// Package pokecache provides a simple in-memory caching mechanism
+// with automatic expiration of entries based on a configured interval.
 package pokecache
 
 import (

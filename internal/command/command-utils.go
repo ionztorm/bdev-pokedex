@@ -1,3 +1,6 @@
+// Package command implements the CLI command system,
+// including the central command registry, individual command logic,
+// and shared structs used across commands.
 package command
 
 import "fmt"

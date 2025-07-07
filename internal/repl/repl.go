@@ -1,3 +1,5 @@
+// Package repl provides a Read-Eval-Print Loop (REPL) interface
+// for interacting with the Pokedex application via the command line.
 package repl
 
 import (

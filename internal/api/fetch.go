@@ -1,3 +1,5 @@
+// Package api provides utilities for fetching and caching data
+// from external HTTP APIs, with JSON unmarshaling support.
 package api
 
 import (
